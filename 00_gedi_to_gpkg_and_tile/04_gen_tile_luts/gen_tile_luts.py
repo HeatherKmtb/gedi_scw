@@ -5,7 +5,7 @@ import tqdm
 import rsgislib.tools.utils
 import rsgislib.vectorattrs
 
-tiles_vec_file='../glb_land_roi_deg_tiles_named.geojson'
+tiles_vec_file='/scratch/a.hek4/layers/glb_land_roi_deg_tiles_named.geojson'
 tiles_vec_lyr='glb_land_roi_deg_tiles_named'
 
 tile_names = rsgislib.vectorattrs.read_vec_column(tiles_vec_file, tiles_vec_lyr, att_column='tile_name')
@@ -16,12 +16,12 @@ out_lut = dict()
 for tile_name in tqdm.tqdm(tile_names):
     out_lut[tile_name] = list()
 
-orbit_lut_files = glob.glob("/scratch/a.hek4/gedi_files_2021_12_16/data/gedi_orbits_tiled/*.json")
+orbit_lut_files = glob.glob("/scratch/a.hek4/data/3.gedi_orbits_tiled/GEDI02_B_2019_Q4/*.json")
 for orbit_lut_file in tqdm.tqdm(orbit_lut_files):
     orbit_lut = rsgislib.tools.utils.read_json_to_dict(orbit_lut_file)
 
     orbit_vec_file = orbit_lut["file"]
-
+    print(orbit_vec_file)
     for beam in gedi_beams:
         beam_tile_names = orbit_lut["beams"][beam]
         for tile_name in beam_tile_names:
@@ -29,7 +29,7 @@ for orbit_lut_file in tqdm.tqdm(orbit_lut_files):
                 out_lut[tile_name].append(orbit_vec_file)
 
 
-out_dir = "/scratch/a.hek4/gedi_files_2021_12_16/data/tile_luts"
+out_dir = "/scratch/a.hek4/data/3.gedi_orbits_tiled/GEDI02_B_2019_Q4/tile_luts"
 
 for tile_name in tqdm.tqdm(tile_names):
     if len(out_lut[tile_name]) > 0:

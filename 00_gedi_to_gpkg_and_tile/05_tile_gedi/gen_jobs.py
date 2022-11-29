@@ -29,14 +29,14 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
         self.gen_command_info(
-            tiles_vec_file='../glb_land_roi_deg_tiles_named.geojson',
+            tiles_vec_file='/scratch/a.hek4/layers/glb_land_roi_deg_tiles_named.geojson',
             tiles_vec_lyr='glb_land_roi_deg_tiles_named',
-            gedi_lut_dir='/scratch/a.hek4/gedi_files_2021_12_16/data/tile_luts',
-            out_dir='/scratch/a.hek4/gedi_files_2021_12_16/data/gedi_base_tiles')
+            gedi_lut_dir='/scratch/a.hek4/data/3.gedi_orbits_tiled/GEDI02_B_2019_Q4/tile_luts',
+            out_dir='/scratch/a.hek4/data/5.gedi_base_tiles/GEDI02_B_2019_Q4')
 
 
         self.pop_params_db()
-        self.create_slurm_sub_sh("tile_gedi_data", 16448, '/scratch/a.hek4/gedi_files_2021_12_16/logs',
+        self.create_slurm_sub_sh("tile_gedi_data", 16448, '/scratch/a.hek4/logs',
                                  run_script='run_exe_analysis.sh', job_dir="job_scripts",
                                  db_info_file="db_info_run_file.txt", n_cores_per_job=10, n_jobs=10,
                                  job_time_limit='2-23:59',
@@ -50,6 +50,6 @@ if __name__ == "__main__":
     process_tools_cls = 'DoTileAnalysis'
 
     create_tools = GenCmds(cmd=script_cmd, db_conn_file="/home/a.hek4/pbpt_db_info.txt",
-                           lock_file_path="/scratch/a.hek4/gedi_files_2021_12_16/tmp/gedi_lock_file.txt",
+                           lock_file_path="/scratch/a.hek4/tmp/gedi_lock_file.txt",
                            process_tools_mod=process_tools_mod, process_tools_cls=process_tools_cls)
     create_tools.parse_cmds()

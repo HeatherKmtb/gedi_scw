@@ -1,0 +1,4 @@
+{
+    "db_conn_str": "postgresql://admin:6qkL9RsB@137.44.249.189:5432/hk_pbpt_db",
+    "lck_file": "/scratch/a.hek4/tmp/gedi_lock_file.txt"
+}
