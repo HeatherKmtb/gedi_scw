@@ -62,3 +62,8 @@ if __name__ == "__main__":
 
     process_tools_mod = 'do_tile_analysis'
     process_tools_cls = 'DoTileAnalysis'
+    
+    create_tools = GenCmds(cmd=script_cmd, db_conn_file="/home/a.hek4/pbpt_db_info.txt",
+                           lock_file_path="/scratch/a.hek4/tmp/gedi_lock_file.txt",
+                           process_tools_mod=process_tools_mod, process_tools_cls=process_tools_cls)   
+    create_tools.parse_cmds()
