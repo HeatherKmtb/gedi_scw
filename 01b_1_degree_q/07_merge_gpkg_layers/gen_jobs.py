@@ -22,39 +22,31 @@ logger = logging.getLogger(__name__)
 class GenCmds(PBPTGenQProcessToolCmds):
 
     def gen_command_info(self, **kwargs):
-        if not os.path.exists(kwargs['out_fig_dir']):
-            os.mkdir(kwargs['out_fig_dir'])
-            
-        if not os.path.exists(kwargs['out_csv_dir']):
-            os.mkdir(kwargs['out_csv_dir'])
+        if not os.path.exists(kwargs['out_dir']):
+            os.mkdir(kwargs['out_dir'])
 
         gedi_files = glob.glob(kwargs['gedi_tiles'])
-        
 
         for gedi_file in gedi_files:
             basename = self.get_file_basename(gedi_file)
-            out_csv_file = os.path.join(kwargs['out_csv_dir'], f'{basename}.csv')
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
 
-            if (not os.path.exists(out_csv_file)):
+            if (not os.path.exists(out_file)):
                 c_dict = dict()
                 c_dict['gedi_file'] = gedi_file
-                c_dict['out_fig_dir'] = '/scratch/a.hek4/results/1_deg/figs/GEDI02_B_2019_Q2/'
-                c_dict['out_csv_file'] = out_csv_file
+                c_dict['out_file'] = out_file
                 c_dict['quarter'] = '2020_Q1'
-                #c_dict['results'] = results
                 self.params.append(c_dict)
 
 
     def run_gen_commands(self):
         self.gen_command_info(
-            gedi_tiles='/scratch/a.hek4/data/1_deg_q/3.remove_lc_cats/GEDI02_B_2019_Q2/*.gpkg',
-            out_fig_dir='/scratch/a.hek4/results/1_deg/figs/GEDI02_B_2019_Q2/',
-            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/GEDI02_B_2019_Q2/')
-            #ALSO CHANGE QUARTER AND OUT_FIG_DIR IN C_DICT ABOVE
-        
+            gedi_tiles='/scratch/a.hek4/data/1_deg_q/6.remove_slope/GEDI02_B_2020_Q1/*.gpkg',
+            out_dir='/scratch/a.hek4/data/1_deg_q/7.merged_layers/GEDI02_B_2020_Q1')
+
         self.pop_params_db()
 
-        self.create_slurm_sub_sh("final", 8224, '/scratch/a.hek4/logs', run_script="run_exe_analysis.sh",
+        self.create_slurm_sub_sh("remove_slope", 8224, '/scratch/a.hek4/logs', run_script="run_exe_analysis.sh",
                                   db_info_file=None, account_name='scw1403', n_cores_per_job=5, n_jobs=5, job_time_limit='2-23:59',
                                   module_load='module load parallel singularity\n')
         #self.create_shell_exe(run_script="run_exe_analysis.sh", cmds_sh_file="cmds_lst.sh", n_cores=25, db_info_file="pbpt_db_info_lcl_file.txt")
@@ -70,3 +62,5 @@ if __name__ == "__main__":
                            lock_file_path="/scratch/a.hek4/tmp/gedi_lock_file.txt",
                            process_tools_mod=process_tools_mod, process_tools_cls=process_tools_cls)   
     create_tools.parse_cmds()
+    
+    
