@@ -25,7 +25,7 @@ class DoTileAnalysis(PBPTQProcessTool):
 
 
     def required_fields(self, **kwargs):
-        return ["gedi_file", "out_file", "raster"]
+        return ["gedi_files", "out_file"]
 
 
     def outputs_present(self, **kwargs):

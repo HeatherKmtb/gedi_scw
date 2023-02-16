@@ -33,8 +33,9 @@ class GenCmds(PBPTGenQProcessToolCmds):
         for tile in tile_list:   
             out_file = os.path.join(kwargs['out_dir'], f'{tile}.gpkg')
 
-            gedi_files = glob.glob(kwargs['gedi_tiles_dir'], f'{tile}.gpkg')
-
+            gedi_files = glob.glob(f'/scratch/a.hek4/data/1_deg_q/7.merged_layers/*/{tile}.gpkg')
+            if not gedi_files:
+                continue
                                 
             if (not os.path.exists(out_file)):
                 c_dict = dict()
