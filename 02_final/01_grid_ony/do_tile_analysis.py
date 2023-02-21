@@ -118,7 +118,7 @@ class ProcessJob(PBPTQProcessTool):
         plt.close 
 
     def required_fields(self, **kwargs):
-        return ["gedi_file", "out_fig_dir", "out_csv_file", "quarter"]
+        return ["gedi_file", "out_fig_dir", "out_csv_file"]
 
     def outputs_present(self, **kwargs):
         return True, dict()
