@@ -34,13 +34,14 @@ class GenCmds(PBPTGenQProcessToolCmds):
         for gedi_file in gedi_files:
             basename = self.get_file_basename(gedi_file)
             out_csv_file = os.path.join(kwargs['out_csv_dir'], f'{basename}.csv')
+            out_gpkg_file = os.path.join(kwargs['out_gpkg_dir'], f'{basename}.gpkg')
 
             if (not os.path.exists(out_csv_file)):
                 c_dict = dict()
                 c_dict['gedi_file'] = gedi_file
                 c_dict['out_fig_dir'] = '/scratch/a.hek4/results/1_deg/figs/all/'
                 c_dict['out_csv_file'] = out_csv_file
-                #c_dict['quarter'] = '2020_Q1'
+                c_dict['out_gpkg_file'] = out_gpkg_file
                 #c_dict['results'] = results
                 self.params.append(c_dict)
 
@@ -49,7 +50,8 @@ class GenCmds(PBPTGenQProcessToolCmds):
         self.gen_command_info(
             gedi_tiles='/scratch/a.hek4/data/1_deg_q/9-all_joined/*.gpkg',
             out_fig_dir='/scratch/a.hek4/results/1_deg/figs/all/',
-            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/all/')
+            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/all/',
+            out_gpkg_dir='/scratch/a.hek4/data/1_deg_q/10-with_cd/')
             #ALSO CHANGE QUARTER AND OUT_FIG_DIR IN C_DICT ABOVE
         
         self.pop_params_db()

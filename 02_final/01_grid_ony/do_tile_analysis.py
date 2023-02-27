@@ -29,6 +29,7 @@ class ProcessJob(PBPTQProcessTool):
         file = self.params['gedi_file']
         out_fig_dir = self.params['out_fig_dir']
         out_csv_file = self.params['out_csv_file']
+        out_gpkg_file = self.params['out_gpkg_file']
         #quarter = self.params['quarter']
         #create df for results
         resultsa = pd.DataFrame(columns = ['Grid', 'qout_gedi', 'deg_free_g', 'mse_g',
@@ -53,6 +54,7 @@ class ProcessJob(PBPTQProcessTool):
         df['cd'] = cd
         final = df.dropna(subset = ['cd'])
         
+        final.to_file(out_gpkg_file, layer = 'layer', driver='GPKG', crs='EPSG:4326')
         #convert height to metres
         incm = final['rh100']
         x = incm/100
@@ -114,7 +116,7 @@ class ProcessJob(PBPTQProcessTool):
         ax.annotate('q = ' + str(qout[0]), xy=(0.975,0.15), xycoords='axes fraction', fontsize=12, horizontalalignment='right', verticalalignment='bottom')
         ax.annotate('MSE = ' + str(mse), xy=(0.975,0.10), xycoords='axes fraction', fontsize=12, horizontalalignment='right', verticalalignment='bottom')
         ax.annotate('No of footprints = ' + str(footprints),xy=(0.975,0.05), xycoords='axes fraction', fontsize=12, horizontalalignment='right', verticalalignment='bottom')
-        plt.savefig(out_fig_dir + 'fig{}.pdf'.format(name))
+        plt.savefig(out_fig_dir + 'fig{}.png'.format(name))
         plt.close 
 
     def required_fields(self, **kwargs):
