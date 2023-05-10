@@ -20,20 +20,19 @@ class DoTileAnalysis(PBPTQProcessTool):
     def do_processing(self, **kwargs):
         file = self.params['gedi_file']
         out_file = self.params['out_file']
-        raster = self.params["raster"]
+        wwf = self.params["wwf"]
                        
-        beams = ['BEAM0101','BEAM0110',
-                 'BEAM1000','BEAM1011']
-        stats = 'median'
-        for beam in beams:
-            vector = geopandas.read_file(file, layer=beam)
-            result = zonal_stats(vector, raster, stats=stats, geojson_out=True)
-            geostats = geopandas.GeoDataFrame.from_features(result, crs='EPSG:4326')
+        
+        base_gdf = geopandas.read_file(file)
+        join_gdf = geopandas.read_file(wwf)
+           
+        geostats = geopandas.sjoin(base_gdf, join_gdf, how='inner', op='within',
+                                   crs='EPSG:4326')
     
-            geostats.to_file(out_file, layer = beam, driver='GPKG')
+        geostats.to_file(out_file, driver='GPKG')
 
     def required_fields(self, **kwargs):
-        return ["gedi_file", "out_file", "raster"]
+        return ["gedi_file", "out_file", "wwf"]
 
 
     def outputs_present(self, **kwargs):

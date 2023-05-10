@@ -30,18 +30,18 @@ class GenCmds(PBPTGenQProcessToolCmds):
                 c_dict = dict()
                 c_dict['gedi_file'] = gedi_file
                 c_dict['out_file'] = out_file
-                c_dict['raster'] = '/scratch/a.hek4/layers/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif'
+                c_dict['wwf'] = '/scratch/a.hek4/layers/wwf/wwf_terr_ecos.shp'
                 self.params.append(c_dict)
 
 
     def run_gen_commands(self):
         self.gen_command_info(
-            gedi_tiles='/scratch/a.hek4/data/1_deg_q/1.filter_for_quality/GEDI02_B_2020_Q1/*.gpkg',
-            out_dir='/scratch/a.hek4/data/1_deg_q/2.join_lc/GEDI02_B_2020_Q1')
+            gedi_tiles='/scratch/a.hek4/data/1_deg_q/9-all_joined/*.gpkg',
+            out_dir='/scratch/a.hek4/data/1_deg_q/wwf/1-joined_with_gedi')
 
 
         self.pop_params_db()
-        self.create_slurm_sub_sh("join_lc", 8224, '/scratch/a.hek4/logs', run_script="run_exe_analysis.sh",
+        self.create_slurm_sub_sh("join_wwf", 8224, '/scratch/a.hek4/logs', run_script="run_exe_analysis.sh",
                                   db_info_file=None, account_name='scw1403', n_cores_per_job=5, n_jobs=5, job_time_limit='2-23:59',
                                   module_load='module load parallel singularity\n')
         #self.create_shell_exe(run_script="run_exe_analysis.sh", cmds_sh_file="cmds_lst.sh", n_cores=25, db_info_file="pbpt_db_info_lcl_file.txt")
