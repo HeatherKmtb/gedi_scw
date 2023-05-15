@@ -26,10 +26,9 @@ class DoTileAnalysis(PBPTQProcessTool):
         base_gdf = geopandas.read_file(file)
         join_gdf = geopandas.read_file(wwf)
            
-        geostats = geopandas.sjoin(base_gdf, join_gdf, how='inner', op='within',
-                                   crs='EPSG:4326')
+        geostats = geopandas.sjoin(base_gdf, join_gdf, how='inner', op='within',lsuffix='lefty',rsuffix='righty')
     
-        geostats.to_file(out_file, driver='GPKG')
+        geostats.to_file(out_file, driver='GPKG', crs='EPSG:4326')
 
     def required_fields(self, **kwargs):
         return ["gedi_file", "out_file", "wwf"]

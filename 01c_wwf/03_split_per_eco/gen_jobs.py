@@ -24,20 +24,21 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
         for gedi_file in gedi_files:
             basename = self.get_file_basename(gedi_file)
-            out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}_eco_*.gpkg')
+            out_dir = os.path(kwargs['out_dir'])
 
             if (not os.path.exists(out_file)):
                 c_dict = dict()
                 c_dict['gedi_file'] = gedi_file
-                c_dict['out_file'] = out_file
-                c_dict['wwf'] = '/scratch/a.hek4/layers/WWF_Ecoregions/wwf_terr_ecos.shp'
+                c_dict['out_dir'] = out_dir
+                c_dict['basename'] = basename
                 self.params.append(c_dict)
 
 
     def run_gen_commands(self):
         self.gen_command_info(
-            gedi_tiles='/scratch/a.hek4/data/1_deg_q/9-all_joined/*.gpkg',
-            out_dir='/scratch/a.hek4/data/1_deg_q/wwf/1-joined_with_gedi')
+            gedi_tiles='/scratch/a.hek4/data/1_deg_q/wwf/1-joined_with_gedi/*.gpkg',
+            out_dir='/scratch/a.hek4/data/1_deg_q/wwf/2-split_per_eco')
 
 
         self.pop_params_db()
