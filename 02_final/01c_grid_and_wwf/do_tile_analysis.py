@@ -62,7 +62,7 @@ class ProcessJob(PBPTQProcessTool):
         incm = final2['rh100']
         x = incm/100
         final2['h100']=x 
-        final = final2[final2['h100']<=10]
+        final = final2[final2['h100']<=12]
         
         del x, rv, rg
                 

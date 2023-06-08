@@ -39,7 +39,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
             if (not os.path.exists(out_csv_file)):
                 c_dict = dict()
                 c_dict['gedi_file'] = gedi_file
-                c_dict['out_fig_dir'] = '/scratch/a.hek4/results/1_deg/figs/wwf_grid/10m'
+                c_dict['out_fig_dir'] = '/scratch/a.hek4/results/1_deg/figs/wwf_grid/12m/12m'
                 c_dict['out_csv_file'] = out_csv_file
                 #c_dict['out_gpkg_file'] = out_gpkg_file
                 #c_dict['results'] = results
@@ -49,8 +49,8 @@ class GenCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
         self.gen_command_info(
             gedi_tiles='/scratch/a.hek4/data/1_deg_q/wwf/2-split_per_eco/*.gpkg',
-            out_fig_dir='/scratch/a.hek4/results/1_deg/figs/wwf_grid/10m/',
-            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/wwf_grid/10m/')
+            out_fig_dir='/scratch/a.hek4/results/1_deg/figs/wwf_grid/12m/',
+            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/wwf_grid/12m/')
             #out_gpkg_dir='/scratch/a.hek4/data/1_deg_q/10-with_cd/'
             #ALSO CHANGE QUARTER AND OUT_FIG_DIR IN C_DICT ABOVE
         
