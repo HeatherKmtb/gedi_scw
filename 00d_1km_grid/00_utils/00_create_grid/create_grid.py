@@ -1,5 +1,5 @@
 
-import rsgislib.createvectors
+import rsgislib.vectorutils
 
 
 bbox = [-180, 180, -54, 54]
