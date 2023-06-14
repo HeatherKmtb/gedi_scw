@@ -26,6 +26,6 @@ out_vec_lyr = "grid"
 
 rsgislib.vectorattrs.create_name_col(roi_file, roi_lyr, out_vec_file, out_vec_lyr,
                                      out_format='GeoJSON', out_col='tile_name', x_col='xmin', y_col='ymax',
-                                     prefix='grid_', coords_lat_lon=True, int_coords=True, zero_x_pad=3, zero_y_pad=2,
-                                     round_n_digts=0, non_neg=True)
+                                     prefix='grid_', coords_lat_lon=True, int_coords=True, zero_x_pad=9, zero_y_pad=6,
+                                     round_n_digts=5, non_neg=True)
 
