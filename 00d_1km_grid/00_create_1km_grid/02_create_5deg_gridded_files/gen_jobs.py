@@ -22,19 +22,23 @@ class GenCmds(PBPTGenQProcessToolCmds):
             xmax = row['xmax']
             ymin = row['ymin']
             ymax = row['ymax']
-            bbox = [xmin, xmax, ymin, ymax]            
+            bbox = [xmin, xmax, ymin, ymax]     
+            
+            basename = row['tile_name']
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}.geojson')
+    
 
-            c_dict = dict()
-            #c_dict['tiles_vec_file'] = kwargs['tiles_vec_file']
-            c_dict['bbox'] = bbox
-            c_dict['out_vec_file'] = '/scratch/a.hek4/data/1km/5deg_grid.gpkg'
-            c_dict['out_vec_lyr'] = 'grid'
-            self.params.append(c_dict)
+            if (not os.path.exists(out_file)):            
+                c_dict = dict()
+                c_dict['bbox'] = bbox
+                c_dict['out_file'] = out_file
+                c_dict['out_lyr'] = basename
+                self.params.append(c_dict)
 
 
     def run_gen_commands(self):
         self.gen_command_info(
-            tiles_vec_file='/scratch/a.hek4/data/1km/5deg_grid_land.geojson')
+            tiles_vec_file='/scratch/a.hek4/data/1km/glb_land_roi_deg_tiles_named_1km.geojson')
 
 
         self.pop_params_db()
