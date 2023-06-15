@@ -23,8 +23,8 @@ print('done spatial select')
 rsgislib.vectorattrs.pop_bbox_cols(roi_file, roi_lyr, x_min_col='xmin',
                                    x_max_col='xmax', y_min_col='ymin', y_max_col='ymax')
 
-out_vec_file = "glb_land_roi_deg_tiles_named_1km.geojson"
-out_vec_lyr = "grid"
+out_vec_file = "/scratch/a.hek4/data/1km/glb_land_roi_deg_tiles_named_1km.geojson"
+out_vec_lyr = 'glb_land_roi_deg_tiles_named_1km'
 
 rsgislib.vectorattrs.create_name_col(roi_file, roi_lyr, out_vec_file, out_vec_lyr,
                                      out_format='GeoJSON', out_col='tile_name', x_col='xmin', y_col='ymax',
