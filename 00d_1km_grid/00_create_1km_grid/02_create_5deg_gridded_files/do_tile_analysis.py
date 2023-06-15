@@ -2,7 +2,7 @@ from pbprocesstools.pbpt_q_process import PBPTQProcessTool
 import logging
 import os
 import tqdm
-import rsgislib.vectorutils
+import rsgislib.vectorutils.createvectors
 import rsgislib.vectorattrs
 import rsgislib.tools.utils
 
