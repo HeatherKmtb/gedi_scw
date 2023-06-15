@@ -25,7 +25,7 @@ class DoTileAnalysis(PBPTQProcessTool):
 
         rsgislib.vectorattrs.create_name_col(grid_file, grid_lyr, out_file, out_lyr,
                                      out_format='GeoJSON', out_col='tile_name', x_col='xmin', y_col='ymax',
-                                     prefix='grid_', coords_lat_lon=True, int_coords=True, zero_x_pad=4, zero_y_pad=4,
+                                     prefix='grid_', coords_lat_lon=True, int_coords=False, zero_x_pad=4, zero_y_pad=4,
                                      round_n_digts=5, non_neg=True)
 
     def required_fields(self, **kwargs):
