@@ -18,7 +18,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
                  
         for file in grid_files:
             basename = self.get_file_basename(file)
-            out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}.geojson')
 
             if (not os.path.exists(out_file)):            
                 c_dict = dict()
