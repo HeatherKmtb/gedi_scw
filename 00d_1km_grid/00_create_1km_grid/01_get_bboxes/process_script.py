@@ -11,7 +11,7 @@ glb_land_vec_lyr = "glb_land_roi_deg_tiles_named"
 #glb_land_tiles_vec_lyr = "glb_land_deg_tiles"
 
 roi_file = '/scratch/a.hek4/data/1km/5deg_grid_land.geojson'
-roi_lyr='grid'
+roi_lyr='5deg_grid_land'
 
 print('files read')
 
