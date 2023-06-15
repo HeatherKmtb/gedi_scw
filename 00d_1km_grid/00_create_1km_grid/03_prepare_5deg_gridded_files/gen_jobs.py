@@ -32,7 +32,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
         self.gen_command_info(
             tiles_vec_file='/scratch/a.hek4/data/1km/grids/5deg_gridded/*.geojson',
-            out_dir='/scratch/a.hek4/data/1km/grids/grids/5deg_gridded_named')
+            out_dir='/scratch/a.hek4/data/1km/grids/5deg_gridded_named')
 
 
         self.pop_params_db()
