@@ -1,6 +1,5 @@
-import rsgislib
+
 import rsgislib.vectorutils
-import rsgislib.vectorutils.createvectors
 import rsgislib.vectorattrs
 
 glb_tiles_vec_file = "/scratch/a.hek4/data/1km/grid.gpkg"
