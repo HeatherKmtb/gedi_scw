@@ -24,7 +24,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         grid_file = self.params["grid_file"]
                        
         beams = rsgislib.vectorutils.get_vec_lyrs_lst(file)
-        stats = 'tile_name'
+        stats = 'median'
         for beam in beams:
             vector = geopandas.read_file(file, layer=beam)
             
