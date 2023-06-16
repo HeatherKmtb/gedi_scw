@@ -9,6 +9,7 @@ from pbprocesstools.pbpt_q_process import PBPTQProcessTool
 import logging
 import geopandas
 from rasterstats import zonal_stats
+import rsgislib.vectorutils
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +23,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         out_file = self.params['out_file']
         grid_file = self.params["grid_file"]
                        
-        beams = ['BEAM0101','BEAM0110',
-                 'BEAM1000','BEAM1011']
+        beams = rsgislib.vectorutils.get_vec_lyrs_lst(file)
         stats = 'tile_name'
         for beam in beams:
             vector = geopandas.read_file(file, layer=beam)
