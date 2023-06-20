@@ -8,7 +8,7 @@ Created on Wed Nov 30 08:46:52 2022
 from pbprocesstools.pbpt_q_process import PBPTQProcessTool
 import logging
 import geopandas
-from rasterstats import zonal_stats
+#from rasterstats import zonal_stats
 import rsgislib.vectorutils
 
 logger = logging.getLogger(__name__)
@@ -24,16 +24,11 @@ class DoTileAnalysis(PBPTQProcessTool):
         grid = self.params["grid"]
                        
         beams = rsgislib.vectorutils.get_vec_lyrs_lst(gedi_file)
-        stats = 'median'
+        #stats = 'median'
         for beam in beams:
-            vector = geopandas.read_file(gedi_file, layer=beam)
-            
-            result = zonal_stats(vector, grid, stats=stats, geojson_out=True)
-            geostats = geopandas.GeoDataFrame.from_features(result, crs='EPSG:4326')
-    
-            geostats.to_file(out_file, layer = beam, driver='GPKG')
-
-
+            rsgislib.vectorutils.perform_spatial_join(gedi_file, beam, grid,
+                                'glb_land_roi_deg_tiles_named_1km', out_file, beam,
+                                out_format='GPKG', join_how='inner', join_op='within')
 
     def required_fields(self, **kwargs):
         return ["gedi_file", "out_file", "grid"]
