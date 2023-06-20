@@ -8,7 +8,7 @@ Created on Wed Nov 30 08:46:52 2022
 from pbprocesstools.pbpt_q_process import PBPTQProcessTool
 import logging
 import geopandas
-#from rasterstats import zonal_stats
+import rsgislib.vectorutils
 import rsgislib.vectorattrs
 
 logger = logging.getLogger(__name__)
