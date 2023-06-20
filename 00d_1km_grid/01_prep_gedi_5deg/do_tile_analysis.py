@@ -36,7 +36,7 @@ class DoTileAnalysis(PBPTQProcessTool):
 
 
     def required_fields(self, **kwargs):
-        return ["gedi_file", "out_file", "grid_file"]
+        return ["gedi_file", "out_file", "grid"]
 
 
     def outputs_present(self, **kwargs):
