@@ -28,17 +28,11 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
         for gedi_file in gedi_files:
             basename = self.get_file_basename(gedi_file)
-            new_gedi_file = '/scratch/a.hek4/data/1_deg_q/10-9_with_renamed_cols/{}.gpkg'.format(basename)
             out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
-            beams = rsgislib.vectorutils.get_vec_lyrs_lst(gedi_file)
-            for beam in beams:
-                file = gpd.read_file(gedi_file, layer = beam)
-                new_file = file.rename(columns={'index_left':'ind_l','index_right':'ind_r'})
-                new_file.to_file(new_gedi_file, layer = beam)
 
             if (not os.path.exists(out_file)):
                 c_dict = dict()
-                c_dict['gedi_file'] = new_gedi_file
+                c_dict['gedi_file'] = gedi_file
                 c_dict['out_file'] = out_file
                 c_dict['grid'] = grid
                 self.params.append(c_dict)
@@ -46,7 +40,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
         self.gen_command_info(
-            gedi_tiles='/scratch/a.hek4/data/1_deg_q/9-all_joined/*.gpkg',
+            gedi_tiles='/scratch/a.hek4/data/1_deg_q/10-9_with_renamed_cols/*.gpkg',
             out_dir='/scratch/a.hek4/data/1km/1-5deg_prepped')
 
 
