@@ -29,6 +29,10 @@ class DoTileAnalysis(PBPTQProcessTool):
         for beam in beams:
             file = gpd.read_file(gedi_file, layer = beam)
             new_file = file.rename(columns={'index_left':'ind_l','index_right':'ind_r'})
+            print(new_file)
+            print(beam)
+            print(grid)
+            print(out_file)
             rsgislib.vectorattrs.perform_spatial_join(new_file, beam, grid,
                                 'glb_land_roi_deg_tiles_named_1km', out_file, beam,
                                 out_format='GPKG', join_how='inner', join_op='within')
