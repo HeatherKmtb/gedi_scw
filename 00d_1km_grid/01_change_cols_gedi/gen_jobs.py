@@ -43,7 +43,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
 
         self.pop_params_db()
-        self.create_slurm_sub_sh("join_lc", 8224, '/scratch/a.hek4/logs', run_script="run_exe_analysis.sh",
+        self.create_slurm_sub_sh("01d", 8224, '/scratch/a.hek4/logs', run_script="run_exe_analysis.sh",
                                   db_info_file=None, account_name='scw1403', n_cores_per_job=5, n_jobs=5, job_time_limit='2-23:59',
                                   module_load='module load parallel singularity\n')
         #self.create_shell_exe(run_script="run_exe_analysis.sh", cmds_sh_file="cmds_lst.sh", n_cores=25, db_info_file="pbpt_db_info_lcl_file.txt")
