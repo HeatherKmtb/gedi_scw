@@ -8,7 +8,7 @@ Created on Wed Nov 30 13:52:32 2022
 from pbprocesstools.pbpt_q_process import PBPTGenQProcessToolCmds
 import logging
 import glob
-import rsgislib
+import rsgislib.vectorutils
 import rsgislib.vectorattrs
 import os
 import geopandas as gpd
