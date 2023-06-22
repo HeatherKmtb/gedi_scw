@@ -38,7 +38,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         Path(temp_file)    
 
     def required_fields(self, **kwargs):
-        return ["gedi_file", "out_file", "temp_file", "basename"]
+        return ["gedi_file", "out_dir", "temp_file", "basename"]
 
 
     def outputs_present(self, **kwargs):
