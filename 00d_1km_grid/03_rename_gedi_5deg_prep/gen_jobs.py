@@ -17,10 +17,7 @@ logger = logging.getLogger(__name__)
 
 class GenCmds(PBPTGenQProcessToolCmds):
 
-    def gen_command_info(self, **kwargs):
-        if not os.path.exists(kwargs['out_dir']):
-            os.mkdir(kwargs['out_dir'])
-            
+    def gen_command_info(self, **kwargs):            
         if not os.path.exists(kwargs['temp_dir']):
             os.mkdir(kwargs['temp_dir'])            
 
