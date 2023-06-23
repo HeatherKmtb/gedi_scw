@@ -27,7 +27,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
         
         grid = '/scratch/a.hek4/data/1km/glb_land_roi_deg_tiles_named_1km.geojson'
         df = gpd.read_file(grid)
-        tile_names = list(np.unique(df['tile_name'].astype(np.str)))
+        tile_names = list(np.unique(df['tile_name'].astype(str)))
 
         for tile in tile_names:
             gedi_file_list = glob.glob('/scratch/a.hek4/data/1km/2-5deg_named/gedi_*_{}.gpkg'.format(tile))
