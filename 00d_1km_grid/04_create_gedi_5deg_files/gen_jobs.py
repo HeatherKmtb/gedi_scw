@@ -30,9 +30,11 @@ class GenCmds(PBPTGenQProcessToolCmds):
         tile_names = list(np.unique(df['tile_name'].astype(str)))
 
         for tile in tile_names:
+            print(tile)
             gedi_file_list = glob.glob('/scratch/a.hek4/data/1km/2-5deg_named/gedi_*_{}.gpkg'.format(tile))
             out_file = os.path.join(kwargs['out_dir'], f'{tile}.gpkg')
-
+            if not gedi_file_list:
+                continue
 
             if (not os.path.exists(out_file)):
                 c_dict = dict()
