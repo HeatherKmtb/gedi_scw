@@ -21,13 +21,14 @@ class GenCmds(PBPTGenQProcessToolCmds):
             os.mkdir(kwargs['out_dir'])
 
         gedi_files = glob.glob(kwargs['gedi_tiles'])
+        grid_dir='/scratch/a.hek4/data/1km/grids/5deg_gridded_named/'
 
 
         for gedi_file in gedi_files:
             basename = self.get_file_basename(gedi_file)
             name_comp = basename.split('_')     
             grid_id = name_comp[1]
-            grid_file = os.path.join(grid_tiles + 'grid_' + grid_id + '.gpkg')
+            grid_file = os.path.join(grid_dir + 'grid_' + grid_id + '.gpkg')
             out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
 
             if (not os.path.exists(out_file)):
@@ -40,9 +41,8 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
         self.gen_command_info(
-            gedi_tiles='/scratch/a.hek4/data/1km/2.join_gedi/*.gpkg',
-            grid_tiles='/scratch/a.hek4/data/1km/grids/5deg_gridded_named/*.*,
-            out_dir='/scratch/a.hek4/data/1km/3.grid_gedi_joined')
+            gedi_tiles='/scratch/a.hek4/data/1km/3-joined_files/*.gpkg',
+            out_dir='/scratch/a.hek4/data/1km/4-grid_gedi_joined')
 
 
         self.pop_params_db()
