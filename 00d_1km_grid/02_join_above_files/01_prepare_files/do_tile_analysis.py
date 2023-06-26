@@ -26,7 +26,7 @@ class DoTileAnalysis(PBPTQProcessTool):
 
         for beam in beams:
                 file = gpd.read_file(gedi_file, layer = beam)
-                new_file = file.rename(columns={'index_right':'ind_r', 'tile_name_left':
+                new_file = file.rename(columns={'index_right':'in_r', 'tile_name_left':
                                     'tile_1deg', 'tile_name_right':'tile_5deg'})
                 new_file.to_file(out_file, layer = beam)
 
