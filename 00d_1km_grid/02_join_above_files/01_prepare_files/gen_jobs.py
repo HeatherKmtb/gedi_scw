@@ -37,7 +37,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
         self.gen_command_info(
-            gedi_tiles='/scratch/a.hek4/data/1km/2.join_gedi/*.gpkg',
+            gedi_tiles='/scratch/a.hek4/data/1km/3-5_deg_joined*.gpkg',
             out_dir='/scratch/a.hek4/data/1km/3.prepped_gedi')
 
 
