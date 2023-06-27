@@ -26,6 +26,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         beams = rsgislib.vectorutils.get_vec_lyrs_lst(gedi_file)
         stats = 'median'
         for beam in beams:
+
             vector = geopandas.read_file(gedi_file, layer=beam)
             
             result = zonal_stats(vector, grid_file, stats=stats, geojson_out=True)
