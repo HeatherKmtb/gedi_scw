@@ -27,9 +27,10 @@ class DoTileAnalysis(PBPTQProcessTool):
         stats = 'median'
         for beam in beams:
 
-            vector = geopandas.read_file(gedi_file, layer=beam)
+            gedi = geopandas.read_file(gedi_file, layer=beam)
+            grid = geopandas.read_file(grid_file)
             
-            result = zonal_stats(vector, grid_file, stats=stats, geojson_out=True)
+            result = zonal_stats(gedi, grid, stats=stats, geojson_out=True)
             geostats = geopandas.GeoDataFrame.from_features(result, crs='EPSG:4326')
     
             geostats.to_file(out_file, layer = beam, driver='GPKG')
