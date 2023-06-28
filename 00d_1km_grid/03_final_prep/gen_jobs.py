@@ -25,7 +25,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
         for gedi_file in gedi_files:
             basename = self.get_file_basename(gedi_file)
 
-            out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}.csv')
 
             if (not os.path.exists(out_file)):
                 c_dict = dict()
