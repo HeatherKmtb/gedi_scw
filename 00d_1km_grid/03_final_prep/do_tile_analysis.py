@@ -27,14 +27,14 @@ class DoTileAnalysis(PBPTQProcessTool):
         new = df.astype({'tile_name':'str'})
         km = list(np.unique(new['tile_name']))
         
-        results = pd.DataFrame(columns=['1km', '1deg', '5deg', 'mean_h', 'mean_cd'])
+        results = pd.DataFrame(columns=['1km', '1deg', '5deg', 'mean_h', 'mean_cd', 'footprints'])
         for i in km:
             df_km = new.loc[new['tile_name']==i]
             #calculate canopy density
             rv = df_km['rv']
             rg = df_km['rg']
             cd = rv/(rv + rg)
-            #df_km['cd'] = cd
+            footprints = len(cd)
 
             #convert height to metres
             incm = df_km['rh100']
@@ -48,7 +48,8 @@ class DoTileAnalysis(PBPTQProcessTool):
             fivedeg = list(df_km['tile_5deg'])[0]
             
             results = results._append({'1km': i, '1deg':onedeg, '5deg':fivedeg,
-                                      'mean_h': mean_h, 'mean_cd': mean_cd}, 
+                                      'mean_h': mean_h, 'mean_cd': mean_cd,
+                                      'footprints':footprints}, 
                             ignore_index=True)
             
             results.to_csv(out_file)
