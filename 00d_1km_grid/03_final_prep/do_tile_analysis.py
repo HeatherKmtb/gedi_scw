@@ -35,7 +35,9 @@ class DoTileAnalysis(PBPTQProcessTool):
             rg = df_km['rg']
             cd = rv/(rv + rg)
             footprints = len(cd)
-
+            
+            if footprints<=30:
+                continue
             #convert height to metres
             incm = df_km['rh100']
             h = incm/100
