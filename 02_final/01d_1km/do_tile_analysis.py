@@ -64,7 +64,7 @@ class ProcessJob(PBPTQProcessTool):
         meanh = np.mean(x)
         meancd = np.mean(y)
         
-        resultsa = resultsa.append({'Grid': grid, 'qout_gedi': qout, 
+        resultsa = resultsa.append_({'Grid': grid, 'qout_gedi': qout, 
                                     'deg_free_g': footprints, 
                                     'mse_g': mse,
                                     'mean_h_g': meanh, 'mean_cd_g': meancd}, 
