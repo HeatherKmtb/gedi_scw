@@ -30,6 +30,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         results = pd.DataFrame(columns=['1km', '1deg', '5deg', 'mean_h', 'mean_cd', 'footprints'])
         for i in km:
             df_km = new.loc[new['tile_name']==i]
+            df_km = df_km.dropna()
             #calculate canopy density
             rv = df_km['rv']
             rg = df_km['rg']
