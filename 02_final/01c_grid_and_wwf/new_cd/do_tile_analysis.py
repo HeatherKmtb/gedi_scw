@@ -61,15 +61,15 @@ class ProcessJob(PBPTQProcessTool):
         new_cd = cd/((cd+f)*(1-cd))
         
         df['cd'] = new_cd
-        final2 = df.dropna(subset = ['cd'])
+        final = df.dropna(subset = ['cd'])
         
         
         #final.to_file(out_gpkg_file, layer = 'layer', driver='GPKG', crs='EPSG:4326')
         #convert height to metres
-        incm = final2['rh100']
+        incm = final['rh100']
         x = incm/100
-        final2['h100']=x 
-        final = final2[final2['h100']<=12]
+        final['h100']=x 
+        #final = final2[final2['h100']<=12]
         
         del x, rv, rg
                 
