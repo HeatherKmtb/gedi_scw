@@ -32,7 +32,7 @@ class ProcessJob(PBPTQProcessTool):
         #out_gpkg_file = self.params['out_gpkg_file']
         #quarter = self.params['quarter']
         #create df for results
-        resultsa = pd.DataFrame(columns = ['Grid', 'eco', 'qout_gedi', 'deg_free_g', 'mse_g',
+        results = pd.DataFrame(columns = ['Grid', 'eco', 'qout_gedi', 'deg_free_g', 'mse_g',
                                            'mean_h_g', 'mean_cd_g', 'max_h_g'])
 
 
@@ -94,14 +94,16 @@ class ProcessJob(PBPTQProcessTool):
         meancd = np.mean(y)
         maxh = np.max(x)
         
-        resultsa = resultsa.append({'Grid': name, 'eco':eco, 'qout_gedi': qout, 
+        new_row = pd.Series({'Grid': name, 'eco':eco, 'qout_gedi': qout, 
                                     'deg_free_g': footprints, 
                                     'mse_g': mse,
                                     'mean_h_g': meanh, 'mean_cd_g': meancd, 
-                                    'max_h_g': maxh}, 
-                                    ignore_index=True)
+                                    'max_h_g': maxh})
+        
+        results = pd.concat([results, new_row.to_frame().T], 
+                                    ignore_index=True)       
 
-        resultsa.to_csv(out_csv_file)
+        results.to_csv(out_csv_file)
 
         xy = np.vstack([x,y])
         z = gaussian_kde(xy)(xy)
