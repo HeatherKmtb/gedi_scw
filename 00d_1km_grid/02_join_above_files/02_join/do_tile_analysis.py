@@ -1,3 +1,4 @@
+"joining the prepared gedi tiles to the 5 degree grid files with 1km grid"
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """

@@ -1,3 +1,5 @@
+"joining the 1 degree gedi files together according to 5 degree grid"
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """

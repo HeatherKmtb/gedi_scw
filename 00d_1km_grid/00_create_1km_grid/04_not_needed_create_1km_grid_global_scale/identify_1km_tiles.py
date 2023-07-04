@@ -1,3 +1,4 @@
+"original creation of 1km grid on global scale script which wouldn't work as too huge"
 
 import rsgislib.vectorutils
 import rsgislib.vectorattrs

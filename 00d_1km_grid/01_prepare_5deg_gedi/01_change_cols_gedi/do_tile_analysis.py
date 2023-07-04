@@ -1,3 +1,5 @@
+"renaming columns of the GEDI files in preparation for join"
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """

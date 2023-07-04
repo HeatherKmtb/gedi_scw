@@ -1,3 +1,5 @@
+"get the top left corner of each 5 degree tile and use coordinates to make a column with that information"
+
 
 import rsgislib.vectorutils
 import rsgislib.vectorattrs

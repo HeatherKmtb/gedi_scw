@@ -1,3 +1,5 @@
+"splitting into 5 degree tiles and creating a 1km grid for each of these"
+
 from pbprocesstools.pbpt_q_process import PBPTQProcessTool
 import logging
 import os

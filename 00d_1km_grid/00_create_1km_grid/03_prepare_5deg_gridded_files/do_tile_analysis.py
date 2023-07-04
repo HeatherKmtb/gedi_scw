@@ -1,3 +1,5 @@
+"for each 5 degree tile get the top left corner of each 1km tile and use coordinates to make a column with that information"
+
 from pbprocesstools.pbpt_q_process import PBPTQProcessTool
 import logging
 import os

@@ -1,3 +1,4 @@
+"renaming the columns in preparation for the join"
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
