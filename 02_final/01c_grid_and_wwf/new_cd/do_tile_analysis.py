@@ -29,7 +29,7 @@ class ProcessJob(PBPTQProcessTool):
         file = self.params['gedi_file']
         out_fig_dir = self.params['out_fig_dir']
         out_csv_file = self.params['out_csv_file']
-        #out_gpkg_file = self.params['out_gpkg_file']
+        out_check_file = self.params['out_check_file']        #out_gpkg_file = self.params['out_gpkg_file']
         #quarter = self.params['quarter']
         #create df for results
         results = pd.DataFrame(columns = ['Grid', 'eco', 'qout_gedi', 'deg_free_g', 'mse_g',
@@ -72,7 +72,7 @@ class ProcessJob(PBPTQProcessTool):
         df['1-cd'] = steptwo
         df['(cd+f)(1-cd)'] = stepthree
         
-        df.to_file('/scratch/a.hek4/results/1_deg/wwf_grid_newcd_check.csv')
+        df.to_csv(out_check_file)
         
         
         #final.to_file(out_gpkg_file, layer = 'layer', driver='GPKG', crs='EPSG:4326')
