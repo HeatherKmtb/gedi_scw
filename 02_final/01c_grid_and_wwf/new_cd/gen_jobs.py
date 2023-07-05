@@ -54,9 +54,9 @@ class GenCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
         self.gen_command_info(
             gedi_tiles='/scratch/a.hek4/data/1_deg_q/wwf/2-split_per_eco/*.gpkg',
-            out_fig_dir='/scratch/a.hek4/results/1_deg/figs/wwf_grid/new_cd/',
-            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/wwf_grid/new_cd/',
-            out_check_dir='/scratch/a.hek4/results/1_deg/csvs/new_cd/check/')
+            out_fig_dir='/scratch/a.hek4/results/1_deg/figs/wwf_grid/new_cd2/',
+            out_csv_dir='/scratch/a.hek4/results/1_deg/csvs/wwf_grid/new_cd2/',
+            out_check_dir='/scratch/a.hek4/results/1_deg/csvs/new_cd/check2/')
             #out_gpkg_dir='/scratch/a.hek4/data/1_deg_q/10-with_cd/'
             #ALSO CHANGE QUARTER AND OUT_FIG_DIR IN C_DICT ABOVE
         

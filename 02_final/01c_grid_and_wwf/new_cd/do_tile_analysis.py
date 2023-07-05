@@ -58,9 +58,10 @@ class ProcessJob(PBPTQProcessTool):
         rhog = df['rhog'] 
         f = rhov/rhog
         
-        stepone = cd+f
-        steptwo = 1-cd
-        stepthree = stepone/steptwo
+        stepone = f/1
+        steptwo = stepone*(1-cd)
+        steptwopointfive = cd + steptwo
+        stepthree = stepone/steptwopointfive
         new_cd = cd/stepthree
         #new_cd = cd/((cd+f)*(1-cd))
         
