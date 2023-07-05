@@ -58,10 +58,21 @@ class ProcessJob(PBPTQProcessTool):
         rhog = df['rhog'] 
         f = rhov/rhog
         
-        new_cd = cd/((cd+f)*(1-cd))
+        stepone = cd+f
+        steptwo = 1-cd
+        stepthree = stepone * steptwo
+        new_cd = cd/stepthree
+        #new_cd = cd/((cd+f)*(1-cd))
         
         df['cd'] = new_cd
         final = df.dropna(subset = ['cd'])
+        
+        df['f'] = f
+        df['cd+f'] = stepone
+        df['1-cd'] = steptwo
+        df['(cd+f)(1-cd)'] = stepthree
+        
+        df.to_file('/scratch/a.hek4/results/1_deg/wwf_grid_newcd_check.csv')
         
         
         #final.to_file(out_gpkg_file, layer = 'layer', driver='GPKG', crs='EPSG:4326')
