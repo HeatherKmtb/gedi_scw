@@ -60,7 +60,7 @@ class ProcessJob(PBPTQProcessTool):
         
         stepone = cd+f
         steptwo = 1-cd
-        stepthree = stepone * steptwo
+        stepthree = stepone/steptwo
         new_cd = cd/stepthree
         #new_cd = cd/((cd+f)*(1-cd))
         
@@ -70,7 +70,7 @@ class ProcessJob(PBPTQProcessTool):
         df['f'] = f
         df['cd+f'] = stepone
         df['1-cd'] = steptwo
-        df['(cd+f)(1-cd)'] = stepthree
+        df['(cd+f)/(1-cd)'] = stepthree
         
         df.to_csv(out_check_file)
         
