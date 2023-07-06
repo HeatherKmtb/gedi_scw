@@ -1,8 +1,8 @@
 import glob
 import pandas as pd
 
-csvs = glob.glob('/scratch/a.hek4/results/1_deg/csvs/wwf_grid/new_cd/*.csv')
-out_file = '/scratch/a.hek4/results/1_deg/csvs/wwf_grid_new_cd.csv'
+csvs = glob.glob('/scratch/a.hek4/results/1_deg/csvs/wwf_grid/new_cd2/*.csv')
+out_file = '/scratch/a.hek4/results/1_deg/csvs/wwf_grid_new_cd2.csv'
 
 
 dfList = [pd.read_csv(c) for c in csvs]
