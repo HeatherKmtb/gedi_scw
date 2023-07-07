@@ -29,7 +29,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
             name_comp = basename.split('_')     
             grid_id = name_comp[1]
             grid_file = os.path.join(grid_dir + 'grid_' + grid_id + '.gpkg')
-            if not grid_file.exists:
+            if not os.path.exists(grid_file):
                 continue
             out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
 
