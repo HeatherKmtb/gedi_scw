@@ -25,7 +25,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
             bbox = [xmin, xmax, ymin, ymax]     
             
             basename = row['tile_name']
-            out_file = os.path.join(kwargs['out_dir'], f'{basename}.geojson')
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
     
 
             if (not os.path.exists(out_file)):            
