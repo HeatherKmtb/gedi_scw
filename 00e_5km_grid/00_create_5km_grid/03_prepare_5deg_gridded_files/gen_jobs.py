@@ -18,7 +18,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
                  
         for file in grid_files:
             basename = self.get_file_basename(file)
-            out_file = os.path.join(kwargs['out_dir'], f'{basename}.geojson')
+            out_file = os.path.join(kwargs['out_dir'], f'{basename}.gpkg')
 
             if (not os.path.exists(out_file)):            
                 c_dict = dict()
@@ -31,7 +31,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
         self.gen_command_info(
-            tiles_vec_file='/scratch/a.hek4/data/5km/grids/5deg_gridded/*.geojson',
+            tiles_vec_file='/scratch/a.hek4/data/5km/grids/5deg_gridded/*.gpkg',
             out_dir='/scratch/a.hek4/data/5km/grids/5deg_gridded_named')
 
 
