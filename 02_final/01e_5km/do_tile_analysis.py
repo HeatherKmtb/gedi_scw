@@ -82,12 +82,11 @@ class ProcessJob(PBPTQProcessTool):
 
             results.to_csv(out_csv_file)
 
-            #xy = np.vstack([x,y])
-            #z = gaussian_kde(xy)(xy)
+            xy = np.vstack([x,y])
+            z = gaussian_kde(xy)(xy)
 
-            fig = plt.figure()
-            ax = fig.add_sublot(1, 1, 1, projection='scatter_density')
-            ax.scatter(x, y)
+            fig, ax = plt.subplots()
+            ax.scatter(x, y, c=z, s=10)
             plt.rcParams.update({'font.size':12}) 
 
             ax.set_title('Grid square ' + i)
