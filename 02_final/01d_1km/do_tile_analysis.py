@@ -42,9 +42,18 @@ class ProcessJob(PBPTQProcessTool):
         tile = list(np.unique(new['1deg']))
         
         for i in tile:
-            final = new.loc[new['1deg']==i]
-                        
+            dfi = new.loc[new['1deg']==i]
+                 
+            #extra code to remove 1km squares without sufficient footprints to make a mean
+            final = dfi[dfi['footprints']>=10]
+            if final.empty:
+                continue
+            
+            
             footprints = len(final['mean_cd'])
+            
+            if footprints < 50:
+                continue
         
             #regression 
             def f(x,q):
