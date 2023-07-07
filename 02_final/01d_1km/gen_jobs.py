@@ -49,8 +49,8 @@ class GenCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
         self.gen_command_info(
             gedi_tiles='/scratch/a.hek4/results/1km/1-initial_csvs/*.csv',
-            out_fig_dir='/scratch/a.hek4/results/1km/figs/',
-            out_csv_dir='/scratch/a.hek4/results/1km/csvs/')
+            out_fig_dir='/scratch/a.hek4/results/1km/figs/filtered/',
+            out_csv_dir='/scratch/a.hek4/results/1km/csvs/filtered/')
         
         self.pop_params_db()
 
