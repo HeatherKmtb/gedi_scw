@@ -20,7 +20,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         out_file = self.params['out_file']
         out_lyr = self.params['out_lyr']
         
-        rsgislib.vectorutils.createvectors.define_grid(bbox=bbox, x_size = 0.01, y_size = 0.01, 
+        rsgislib.vectorutils.createvectors.define_grid(bbox=bbox, x_size = 0.05, y_size = 0.05, 
                     in_epsg_code = 4326, out_vec=out_file, out_vec_lyr=out_lyr, out_format='GPKG')
 
 
