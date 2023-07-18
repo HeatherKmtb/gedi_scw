@@ -27,7 +27,8 @@ class DoTileAnalysis(PBPTQProcessTool):
         new = df.astype({'tile_name':'str'})
         km = list(np.unique(new['tile_name']))
         
-        results = pd.DataFrame(columns=['5km', '1deg', '5deg', 'mean_h', 'mean_cd', 'footprints'])
+        results = pd.DataFrame(columns=['5km', '1deg', '5deg', 'mean_h', 
+                                'mean_cd', 'footprints', 'max_cd', 'min_cd'])
         for i in km:
             df_km = new.loc[new['tile_name']==i]
             df_km = df_km.dropna()
@@ -46,14 +47,18 @@ class DoTileAnalysis(PBPTQProcessTool):
             #calculate means
             mean_cd = st.mean(cd)
             mean_h = st.mean(h)
+            max_cd = max(cd)
+            min_cd = min(cd)
+            var_cd = np.var(cd)
             
             onedeg = list(df_km['tile_1deg'])[0]
             fivedeg = list(df_km['tile_5deg'])[0]
             
             results = results._append({'5km': i, '1deg':onedeg, '5deg':fivedeg,
                                       'mean_h': mean_h, 'mean_cd': mean_cd,
-                                      'footprints':footprints}, 
-                            ignore_index=True)
+                                      'footprints':footprints, 'max_cd':max_cd,
+                                      'min_cd':min_cd, 'var_cd':var_cd}, 
+                                      ignore_index=True)
             
             results.to_csv(out_file)
 
