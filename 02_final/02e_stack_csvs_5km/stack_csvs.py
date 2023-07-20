@@ -5,7 +5,7 @@ import os
 csvs = glob.glob('/scratch/a.hek4/results/5km/csvs/*.csv')
 out_file = '/scratch/a.hek4/results/5km.csv'
 
-csv_list = []
+csv_list = list()
 
 for csv in csvs:
     try:
