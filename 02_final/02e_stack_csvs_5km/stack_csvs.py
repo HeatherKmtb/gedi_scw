@@ -1,11 +1,21 @@
 import glob
 import pandas as pd
+import os.stat
 
 csvs = glob.glob('/scratch/a.hek4/results/5km/csvs/*.csv')
 out_file = '/scratch/a.hek4/results/5km.csv'
 
+csv_list = []
 
-dfList = [pd.read_csv(c) for c in csvs]
+for csv in csvs:
+    try:
+        if os.stat(csv).stsize>0:
+              csv_list - csv_list.append(csv)
+    except OSError:
+        continue
+
+
+dfList = [pd.read_csv(c) for c in csv_list]
     
 df = pd.concat(dfList)  
 df.to_csv(out_file)

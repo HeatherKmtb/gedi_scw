@@ -17,13 +17,12 @@ logger = logging.getLogger(__name__)
 class GenCmds(PBPTGenQProcessToolCmds):
 
     def gen_command_info(self, **kwargs):
-        if not os.path.exists(kwargs['out_dir']):
-            os.mkdir(kwargs['out_dir'])
 
         gedi_files = glob.glob(kwargs['gedi_tiles'])
+        out_file = '/scratch/a.hek4/results/5km.csv'
 
         for gedi_file in gedi_files:
-            basename = self.get_file_basename(gedi_file)
+            #basename = self.get_file_basename(gedi_file)
             
             try:
                 if os.stat(gedi_file).stsize>0:
