@@ -9,7 +9,7 @@ csv_list = []
 
 for csv in csvs:
     try:
-        if os.stat(csv).stsize>0:
+        if os.stat(csv).st_size>0:
               csv_list - csv_list.append(csv)
     except OSError:
         continue
