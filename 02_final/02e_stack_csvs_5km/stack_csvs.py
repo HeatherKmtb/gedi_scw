@@ -2,8 +2,8 @@ import glob
 import pandas as pd
 import os
 
-csvs = glob.glob('/scratch/a.hek4/results/5km/csvs/*.csv')
-out_file = '/scratch/a.hek4/results/5km.csv'
+csvs = glob.glob('/scratch/a.hek4/results/5km/1-initial_csvs/*.csv')
+out_file = '/scratch/a.hek4/results/5km_cdinv.csv'
 
 csv_list = list()
 
