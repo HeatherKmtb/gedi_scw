@@ -1,6 +1,6 @@
 import glob
 import pandas as pd
-import os.stat
+import os
 
 csvs = glob.glob('/scratch/a.hek4/results/5km/csvs/*.csv')
 out_file = '/scratch/a.hek4/results/5km.csv'
