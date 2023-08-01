@@ -39,7 +39,7 @@ class DoTileAnalysis(PBPTQProcessTool):
         
            
 
-        geostats.to_file(out_file, driver='GPKG', crs='EPSG:4326')
+        #geostats.to_file(out_file, driver='GPKG', crs='EPSG:4326')
 
     def required_fields(self, **kwargs):
         return ["gedi_file", "out_dir", "basename"]
