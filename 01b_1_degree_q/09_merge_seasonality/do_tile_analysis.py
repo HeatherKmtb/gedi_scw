@@ -24,7 +24,7 @@ class ProcessJob(PBPTQProcessTool):
         out_file = self.params["out_file"]
         tile = self.params['tile']
                        
-        rsgislib.vectorutils.merge_vector_to_gpkg(in_vec_files = files,
+        rsgislib.vectorutils.merge_vectors_to_gpkg(in_vec_files = files,
                 out_vec_file = out_file, out_vec_lyr = tile, 
                 exists = False)
 
