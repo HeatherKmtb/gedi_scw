@@ -29,7 +29,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
         tile_names = rsgislib.vectorattrs.read_vec_column(kwargs['tiles_vec_file'], kwargs['tiles_vec_lyr'], att_column='tile_name')
 
         for tile_name in tile_names:
-            gedi_files = glob.glob('/scratch/a.hek4/data/1_deg_q/7b-renamed/summer/' + tile_name + '*.gpkg')
+            gedi_files = glob.glob('/scratch/a.hek4/data/1_deg_q/7b-renamed/summer/*' + tile_name + '*.gpkg')
             out_file = os.path.join(kwargs['out_dir'], f'{tile_name}_summer.gpkg')
 
             if (not os.path.exists(out_file)):
