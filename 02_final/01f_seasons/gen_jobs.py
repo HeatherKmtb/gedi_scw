@@ -42,7 +42,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
             if (not os.path.exists(out_csv_file)):
                 c_dict = dict()
                 c_dict['gedi_file'] = gedi_file
-                c_dict['out_fig_dir'] = '/scratch/a.hek4/results/1_deg/figs/all/'
+                c_dict['out_fig_dir'] = '/scratch/a.hek4/results/1_deg/figs/summer/'
                 c_dict['out_csv_file'] = out_csv_file
                 c_dict['out_gpkg_file'] = out_gpkg_file
                 #c_dict['results'] = results
